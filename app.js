@@ -1307,13 +1307,25 @@ document.head.appendChild(notificationStyles);
 // Global app instance
 let app;
 
-// Initialize the application
+// Initialize the application and safely assign global handlers after DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     app = new ProductDataExplorer();
     window.currentProduct = null; // For product page context
-});
 
-// Make currentProduct globally accessible for HTML handlers
-function setCurrentProduct(product) {
-    window.currentProduct = product;
-}
+    // Assign global functions to window to ensure they are available for HTML event handlers
+    window.navigateToPage = (page, data) => app.navigateToPage(page, data);
+    window.navigateToCategory = (slug) => app.navigateToCategory(slug);
+    window.toggleDropdown = (id) => app.toggleDropdown(id);
+    window.handleSearch = (event) => app.handleSearch(event);
+    window.performSearch = () => app.performSearch();
+    window.toggleCart = () => app.toggleCart();
+    window.toggleTheme = () => app.toggleTheme();
+    window.toggleMobileMenu = () => app.toggleMobileMenu();
+    window.toggleFilters = () => app.toggleFilters();
+    window.toggleView = (view) => app.toggleView(view);
+    window.handleSort = () => app.handleSort();
+    window.clearFilters = () => app.clearFilters();
+    window.addToCart = (productOrId) => app.addToCart(productOrId);
+    window.toggleWishlist = (product) => app.toggleWishlist(product);
+    window.setCurrentProduct = (product) => { window.currentProduct = product; };
+});
