@@ -1878,7 +1878,7 @@ select.form-control {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(var(--color-slate-900-rgb), 0.8);
+  background: rgba(var(--color-slate-900-rgb), 0.3); /* Less opaque for better UX */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1886,7 +1886,7 @@ select.form-control {
 }
 
 .loading-spinner {
-  color: var(--color-primary);
+  color: var(--color-secondary); /* Less intense color for spinner */
 }
 
 .skeleton {
